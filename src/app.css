@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--black: #121213;
+	--gradient-primary: linear-gradient(108.47deg, #e17cfd 2.55%, #6dbfff 96.51%);
+}
+
+body {
+	background-color: var(--black);
+	color: white;
+}
+
+@layer components {
+	.inner {
+		@apply mx-auto xl:max-w-7xl;
+	}
+	.flex-center {
+		@apply flex items-center justify-center;
+	}
+	.absolute-center {
+		@apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+	}
+	.test {
+		@apply border border-solid border-red-600 bg-red-600/20;
+	}
+	.test-b {
+		@apply border-4 border-dashed border-red-600;
+	}
+}
+
+.hero-bg {
+	background-image: url('hero.png');
+	@apply h-full bg-center bg-cover bg-no-repeat;
+}
