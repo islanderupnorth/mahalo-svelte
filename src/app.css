@@ -31,6 +31,6 @@ body {
 }
 
 .hero-bg {
-	background-image: url('hero.png');
+	background-image: url('/hero.png');
 	@apply h-full bg-center bg-cover bg-no-repeat;
 }
