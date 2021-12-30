@@ -1,9 +1,16 @@
 import { writable } from 'svelte/store';
 import { variables } from '$lib/variables';
 
-export const searchResults = writable([]);
+const searchResults = writable([]);
 
-const request = (slug, params) => {
+export default searchResults;
+
+interface Params {
+	query?: string;
+	id?: number;
+}
+
+const request = async (slug: string, params: Params) => {
 	let url = variables.baseUrl + slug;
 
 	if (params?.query) url += `?api_key=${variables.apiKey}` + `&query=${params.query}`;
@@ -11,10 +18,10 @@ const request = (slug, params) => {
 		url += `/${params.id}?api_key=${variables.apiKey}&append_to_response=watch/providers&language=en-US&watch_region=DK`;
 	else url += variables.apiKey;
 
-	return fetch(url).then((response) => response.json());
+	return await fetch(url).then((response) => response.json());
 };
 
-export const queryApi = async (searchValue) => {
+export const queryApi = async (searchValue: string) => {
 	if (searchValue === '') return searchResults.update(() => []);
 
 	const query = searchValue.trim().replace(/\ /g, '+');
@@ -23,7 +30,7 @@ export const queryApi = async (searchValue) => {
 		request(`/${media_type}`, { id })
 	);
 	const allRequests = await Promise.all(requests);
-	const results = await allRequests.map((item) => ({
+	const results = allRequests.map((item) => ({
 		...item,
 		providers: item['watch/providers']?.results.DK || null
 	}));
