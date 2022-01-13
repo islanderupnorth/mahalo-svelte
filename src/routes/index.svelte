@@ -1,22 +1,12 @@
 <script lang="ts">
 	import searchResults from '../stores/search';
+	import CurtainIntro from '../components/curtain-intro.svelte';
 	import Header from '../components/header.svelte';
 	import HeroSearch from '../components/hero-search.svelte';
 	import SearchResults from '../components/search-results.svelte';
 </script>
 
-<div class="curtain">
-	<ul class="left">
-		<li class="netflix"><img src="/curtain/NETFLIX_IMAGE-min.png" alt="netflix" /></li>
-		<li class="disney"><img src="/curtain/DISNEY_IMAGE-min.png" alt="disney" /></li>
-		<li class="prime"><img src="/curtain/PRIME_IMAGE-min.png" alt="amazone prime" /></li>
-	</ul>
-	<ul class="right">
-		<li class="hbo"><img src="/curtain/HBO_IMAGE-min.png" alt="hbo max" /></li>
-		<li class="bb"><img src="/curtain/BLOCKBUSTER_IMAGE-min.png" alt="blockbuster" /></li>
-		<li class="apple"><img src="/curtain/APPLE_IMAGE-min.png" alt="apple tv" /></li>
-	</ul>
-</div>
+<CurtainIntro />
 <div class="intro-fadein">
 	<Header />
 	<main class:is-searching={$searchResults.length > 0}>
@@ -32,96 +22,16 @@
 </div>
 
 <style>
-	.curtain {
-		@apply fixed inset-0 z-50 h-screen w-screen flex;
-	}
-
-	ul {
-		width: 60vw;
-		@apply relative;
-	}
-
-	li {
-		z-index: 100;
-		position: absolute;
-		height: 100vh;
-		width: 100%;
-		width: 20vw;
-	}
-
-	img {
-		object-fit: cover;
-		height: 100%;
-		width: 100%;
-	}
-
-	.left img {
-		animation: slideOutLeft 1000ms ease-in 0s forwards;
-	}
-	.right img {
-		animation: slideOutRight 1000ms ease-in 0s forwards;
-	}
-
-	.prime {
-		left: -3vw;
-	}
-	.netflix {
-		left: 33vw;
-	}
-	.disney {
-		left: 15vw;
-	}
-	.netflix img,
-	.hbo img {
-		animation-delay: 2333ms;
-	}
-	.disney img,
-	.bb img {
-		animation-delay: 2667ms;
-	}
-	.prime img,
-	.apple img {
-		animation-delay: 3000ms;
-	}
-
-	.hbo {
-		right: 33vw;
-	}
-	.bb {
-		right: 15vw;
-	}
-	.apple {
-		right: -3vw;
-	}
-
-	@keyframes slideOutLeft {
-		0% {
-			transform: translateX(0);
-		}
-		100% {
-			transform: translateX(-100vh);
-		}
-	}
-
-	@keyframes slideOutRight {
-		0% {
-			transform: translateX(0);
-		}
-		100% {
-			transform: translateX(100vh);
-		}
-	}
-
-	.intro-fadein {
-		opacity: 0.025;
-		animation: introFadeIn 1000ms ease-in 3600ms forwards;
-	}
-
 	main {
 		@apply transition-transform transform;
 	}
 	.is-searching {
 		transform: translateY(-13%);
+	}
+
+	.intro-fadein {
+		opacity: 0.025;
+		animation: introFadeIn 1000ms ease-in 3200ms forwards;
 	}
 
 	@keyframes introFadeIn {
