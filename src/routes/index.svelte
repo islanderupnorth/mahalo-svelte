@@ -17,17 +17,19 @@
 		<li class="apple"><img src="/curtain/APPLE_IMAGE-min.png" alt="apple tv" /></li>
 	</ul>
 </div>
-<Header />
-<main class:is-searching={$searchResults.length > 0}>
-	<HeroSearch />
-	<!-- <h1>Get inspired by: Show the top 10 trendings in Denmark (All subscriptions)</h1> -->
-	<!-- Remembers your choices -->
-	<!-- Filtering -->
-	<!-- Airtable "Get early access" database - on success Mahalo (Thank you!) -->
-	<!-- Add credit to TMDB <3 -->
-	<!-- Starting image folding out - Danni has images! -->
-	<SearchResults />
-</main>
+<div class="intro-fadein">
+	<Header />
+	<main class:is-searching={$searchResults.length > 0}>
+		<HeroSearch />
+		<!-- <h1>Get inspired by: Show the top 10 trendings in Denmark (All subscriptions)</h1> -->
+		<!-- Remembers your choices -->
+		<!-- Filtering -->
+		<!-- Airtable "Get early access" database - on success Mahalo (Thank you!) -->
+		<!-- Add credit to TMDB <3 -->
+		<!-- Starting image folding out - Danni has images! -->
+		<SearchResults />
+	</main>
+</div>
 
 <style>
 	.curtain {
@@ -94,7 +96,7 @@
 			transform: translateX(0);
 		}
 		100% {
-			transform: translateX(-75vh);
+			transform: translateX(-100vh);
 		}
 	}
 
@@ -103,13 +105,16 @@
 			transform: translateX(0);
 		}
 		100% {
-			transform: translateX(75vh);
+			transform: translateX(100vh);
 		}
 	}
 
-	main {
+	.intro-fadein {
 		opacity: 0.025;
 		animation: introFadeIn 1000ms ease-in 3600ms forwards;
+	}
+
+	main {
 		@apply transition-transform transform;
 	}
 	.is-searching {
