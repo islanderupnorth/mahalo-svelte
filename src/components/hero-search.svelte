@@ -1,6 +1,8 @@
 <script lang="ts">
 	import searchResults, { queryApi } from '../stores/search';
 	import ToggleSubscription from './toggle-subscription.svelte';
+	import Modal from './Modal.svelte';
+	import { modal } from '../stores/modal';
 
 	const INPUT_TIMER = 200;
 
@@ -34,7 +36,9 @@
 					placeholder="Search"
 				/>
 			</div>
-			<ToggleSubscription />
+			<Modal show={$modal}>
+				<ToggleSubscription />
+			</Modal>
 		</div>
 	</div>
 </section>
