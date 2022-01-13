@@ -108,7 +108,7 @@
 	}
 
 	main {
-		opacity: 0.1;
+		opacity: 0.025;
 		animation: introFadeIn 1000ms ease-in 3600ms forwards;
 		@apply transition-transform transform;
 	}
@@ -118,7 +118,7 @@
 
 	@keyframes introFadeIn {
 		0% {
-			opacity: 0.1;
+			opacity: 0.025;
 		}
 		100% {
 			opacity: 1;
