@@ -62,8 +62,11 @@
 		animation: slideOutRight 1000ms ease-in 0s forwards;
 	}
 
+	.prime {
+		left: -3vw;
+	}
 	.netflix {
-		left: 30vw;
+		left: 33vw;
 	}
 	.disney {
 		left: 15vw;
@@ -82,13 +85,13 @@
 	}
 
 	.hbo {
-		right: 30vw;
+		right: 33vw;
 	}
 	.bb {
 		right: 15vw;
 	}
 	.apple {
-		right: 0;
+		right: -3vw;
 	}
 
 	@keyframes slideOutLeft {
