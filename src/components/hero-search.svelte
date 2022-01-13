@@ -1,7 +1,7 @@
 <script lang="ts">
 	import searchResults, { queryApi } from '../stores/search';
 	import ToggleSubscription from './toggle-subscription.svelte';
-	import Modal from './Modal.svelte';
+	import Modal from './modal.svelte';
 	import { modal } from '../stores/modal';
 
 	const INPUT_TIMER = 200;
