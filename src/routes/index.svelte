@@ -6,7 +6,7 @@
 	import SearchResults from '../components/search-results.svelte';
 </script>
 
-<!-- <CurtainIntro /> -->
+<CurtainIntro />
 <Header />
 <main class:is-searching={$searchResults.length > 0}>
 	<HeroSearch />
