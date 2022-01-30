@@ -1,4 +1,15 @@
-<script></script>
+<script>
+	// let clearCurtains = false;
+
+	// setTimeout(() => {
+	// 	clearCurtains = true;
+	// }, 2000);
+
+	// $: console.log(clearCurtains);
+</script>
+
+<!-- on:click={() => alert('CLICKED')}
+class:skip-intro={clearCurtains && 'skip-intro'} -->
 
 <div class="curtain">
 	<ul class="left">
@@ -57,7 +68,18 @@
 
 <style>
 	.curtain {
-		@apply fixed inset-0 z-50 h-screen w-screen flex;
+		@apply fixed inset-0 z-50 h-screen w-screen flex bg-[#00000099];
+		animation: introFadeIn 1000ms ease-in 2600ms forwards;
+	}
+
+	@keyframes introFadeIn {
+		0% {
+			background-color: #00000099;
+		}
+		100% {
+			background-color: #00000000;
+			pointer-events: none;
+		}
 	}
 
 	ul {
@@ -91,10 +113,16 @@
 		left: 50%;
 	}
 
-	.left .inner {
+	.skip-intro {
+		pointer-events: none;
+	}
+
+	.left .inner,
+	.skip-intro .left .inner {
 		animation: slideOutLeft 1000ms ease-in 0s forwards;
 	}
-	.right .inner {
+	.right .inner,
+	.skip-intro .right .inner {
 		animation: slideOutRight 1000ms ease-in 0s forwards;
 	}
 
@@ -107,6 +135,15 @@
 	.disney {
 		left: 10vw;
 	}
+	.skip-intro .netflix .inner,
+	.skip-intro .hbo .inner,
+	.skip-intro .disney .inner,
+	.skip-intro .bb .inner,
+	.skip-intro .prime .inner,
+	.skip-intro .apple .inner {
+		animation-delay: 0;
+	}
+
 	.netflix .inner,
 	.hbo .inner {
 		animation-delay: 2333ms;

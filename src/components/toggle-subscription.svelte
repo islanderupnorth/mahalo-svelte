@@ -13,23 +13,24 @@
 </script>
 
 <div class="flex flex-col items-center w-full">
-	<div class="border-2 border-purple-600 rounded-lg bg-purple-800">
+	<div class="border-2 border-slate-800 rounded-lg bg-black">
 		<button class="toggle-btn" class:is-active={$subscriptions} on:click={showSubscriptions}
-			>My Subscriptions</button
+			>Only My Services</button
 		>
 		<button
 			class="toggle-btn"
 			class:is-active={!$subscriptions}
-			on:click={() => subscriptions.toggle(false)}>All Subscriptions</button
+			on:click={() => subscriptions.toggle(false)}>All Services</button
 		>
 	</div>
 </div>
 
 <style>
 	.toggle-btn {
-		@apply py-2 px-4 text-xl border-2 border-transparent text-purple-200;
+		@apply py-2 px-4 text-sm uppercase font-semibold border-2 border-transparent;
 	}
 	.is-active {
-		@apply bg-purple-500 text-white rounded-lg;
+		background: var(--gradient-primary);
+		@apply text-white rounded-lg border-white/70;
 	}
 </style>

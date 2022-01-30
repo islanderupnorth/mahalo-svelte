@@ -1,20 +1,33 @@
 import { writable } from 'svelte/store';
 import STREAMING_SERVICES from '../constants/providers.json';
 
-export const initialServices = STREAMING_SERVICES.map((service) => ({
-	...service,
-	isSelected: false
-}));
+let localStorageServices = null;
+
+if (typeof window !== 'undefined') {
+	localStorageServices = window?.localStorage.getItem('services');
+}
+
+export const initialServices =
+	JSON.parse(localStorageServices) ||
+	STREAMING_SERVICES.map((service) => ({
+		...service,
+		isSelected: false
+	}));
 
 const selectService = () => {
 	const { subscribe, update } = writable(initialServices);
 
 	const select = (id) =>
 		update((n) => {
-			return n.map((s) => {
+			const updateArr = n.map((s) => {
 				if (s.provider_id === id) return { ...s, isSelected: !s.isSelected };
 				return s;
 			});
+			const stringifyArr = JSON.stringify(updateArr);
+			if (typeof window !== 'undefined') {
+				window?.localStorage.setItem('services', stringifyArr);
+			}
+			return updateArr;
 		});
 
 	return {
